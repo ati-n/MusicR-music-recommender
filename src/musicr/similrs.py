@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 from scipy.sparse import csr_matrix
@@ -7,7 +6,8 @@ from sklearn.decomposition import NMF
 from sklearn.preprocessing import Normalizer, MaxAbsScaler
 from sklearn.pipeline import make_pipeline
 
-import dataconv
+from src.musicr.dataconv import artists_pivot, artists_name_list
+
 
 # Create MaxAbsScaler which scales each feature by max value (by column).
 scaler = MaxAbsScaler()
@@ -23,7 +23,7 @@ normalizer = Normalizer()
 pipeline = make_pipeline(scaler, nmf, normalizer)
 
 # Now we need the data as a csr_matrix
-artists_csr = csr_matrix(dataconv.artists_pivot)
+artists_csr = csr_matrix(artists_pivot)
 
 # Feed the data into the pipeline
 # All numbers normalized between 0 and 1
@@ -39,10 +39,10 @@ Neil Young      0.274571  0.000000  0.0  ...  0.000000  0.0  0.018464
 Dead Kennedys   0.000000  0.014149  0.0  ...  0.285971  0.0  0.000000
 ...
 """
-df = pd.DataFrame(normalized_features, index=dataconv.artists_name_list)
+df = pd.DataFrame(normalized_features, index=artists_name_list)
+
 
 def select_artist(artist="Rage Against the Machine"):
-
     # Access the artist
     access = df.loc[artist]
 
@@ -57,5 +57,3 @@ def select_artist(artist="Rage Against the Machine"):
     # The selected artist has the number 1 on the slace
     # The top similar artists have the closest numbers
     print(similar_artists.nlargest())
-
-

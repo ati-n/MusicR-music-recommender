@@ -2,3 +2,8 @@
 .idea/
 *.xml
 *.iml
+
+# Python
+.build/
+.dist/
+*.egg-info/

@@ -21,6 +21,6 @@ artists_pivot = artists.pivot_table(index="artist_offset", columns="user_offset"
 # Read the artists CSV file
 artists_name = pd.read_csv("../util/artists.csv", header=None)
 
-artists_name_list = [*artists_name[0].values]
+artists_name_list = artists_name[0].values.tolist()
 
 
