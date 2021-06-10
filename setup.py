@@ -6,7 +6,7 @@ setup(
     packages=["musicr"],
     entry_points={
         "console_scripts": [
-            "dataconv = src.__main__:main"
+            "musicr = src.__main__:main"
         ]
     },
 )

@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Read the CSV file with raw data
+# Read the data CSV file with raw data
 artists = pd.read_csv("../util/data.csv")
 
 # Dimension tightening, no need for empty values
@@ -17,5 +17,10 @@ artist_offset                                  ...
 """
 artists_pivot = artists.pivot_table(index="artist_offset", columns="user_offset", fill_value=0)
 
+
+# Read the artists CSV file
+artists_name = pd.read_csv("../util/artists.csv", header=None)
+
+artists_name_list = [*artists_name[0].values]
 
 

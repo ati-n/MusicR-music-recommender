@@ -1,12 +1,13 @@
 import sys
 import dataconv
+import musicr
 
 
 def main(args=None):
     if args is None:
         args = sys.argv[1:]
 
-    artists = dataconv.artists_pivot.head
+    musicr.printout()
 
 
 if __name__ == "__main__":
